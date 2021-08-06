@@ -21,13 +21,19 @@ of each openshift cluster you want to administer using these playbooks.
 
 **Do not commit an unencrypted vault.yml file to Github.**  The example-vault.yml file is just an example and should not be filled in.
 
-If a {repo folder}/vars/{cluster_name}/vault.yml doesn't exist use ansible-vault create
-vault.yml to create it.
-If a {repo folder}/vars/{cluster_name}/vault.yml exists use ansible-vault edit vault.yml to edit it.
+If a {repo folder}/vars/{cluster_name}/vault.yml doesn't exist create one with
+	
+	ansible-vault create vault.yml 
 
-The values for the vsphere variables can be found in the install-config.yaml or by doing the following:
-  oc get machines <master machine name> -o yaml
-The values are in the spec.workspace section.
+If a {repo folder}/vars/{cluster_name}/vault.yml exists edit it using: 
+	
+	ansible-vault edit vault.yml
+
+The values for the vsphere variables can be found in the install-config.yaml spec.workspace stanza 
+	
+or by running the following command:
+  
+	oc get machines <master machine name> -o yaml
 
 ### USAGE:
 	
